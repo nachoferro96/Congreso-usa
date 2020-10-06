@@ -1,0 +1,52 @@
+body {
+    background-color: rgba(173, 173, 173, 0.425);
+}
+
+
+.dropdown-menu {
+    background-color: #5d4954;
+}
+
+.dropdown-item {
+    color: white;
+}
+
+ thead {
+    
+    color: white;
+}
+
+#banner{
+    height: 400px;
+    width: 2000px;
+}
+
+#pic {
+    width: 80%;
+    height: auto;
+    margin-top: 20%;
+}
+
+
+.banner3 {
+    background-image: url(banner.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 450px;
+    width: 2000px;
+}
+
+#logo {
+    width: 10%;
+    height: auto;
+    margin-top: 1%;
+}
+
+#collapse{
+    background-color: #5d4954;
+    border-color: #5d4954;
+    color: whitesmoke;
+  
+}
+

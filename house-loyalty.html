@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="congreso/style.css">
+    <title>House</title>
+</head>
+    <body>
+            <div class="banner3">
+                <img src="congreso/logo.png" alt="asda" id="logo">
+            </div>
+                
+    <nav class="navbar navbar-dark navbar-expand-md" style="background-color: #5d4954;">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto" >
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">   
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Congress 113
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="house-date.html">House</a>
+                        <a class="dropdown-item" href="senate-data.html">Senate</a>
+                    </li>
+                    <li class="nav-item dropdown" >   
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Attendance
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="house-attendance-live.html">House</a>
+                        <a class="dropdown-item" href="senate-attendance1.html">Senate</a>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Party Loyalty
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="house-loyalty.html">House</a>
+                        <a class="dropdown-item" href="senate-loyalty1.html">Senate</a>
+                    </li>        
+                </ul>
+          </div>
+        </nav>        
+             
+          
+                     
+  
+        <br>
+        <br>
+    <div id="app">
+
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-7 my-col">
+                    <h2>Attendance</h2>
+                    <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
+                    
+                    <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+                    
+                </div>    
+                <div class="col-lg-5 my-col">
+                    <h2>House at a glance</h2>
+                    <table class="table">
+                        <thead class="thead" style="background-color:#5d4954">
+                                <tr>
+                                    <th>Party</th>
+                                    <th>Nº of Reps</th>
+                                    <th>% Voted with Prty</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <tr v-for = "elem in statistics.totaldemocratas">
+                                            <td>{{elem.party}}</td>
+                                            <td>{{elem.numero}}</td>
+                                            <td>{{elem.promedio}}</td>  
+                                        </tr>
+                                        <tr v-for = "elem in statistics.totalrepublicans">
+                                            <td>{{elem.party}}</td>
+                                            <td>{{elem.numero}}</td>
+                                            <td>{{elem.promedio}}</td>  
+                                        </tr>
+                                        <tr v-for = "elem in statistics.totalindependents">
+                                            <td>{{elem.party}}</td>
+                                            <td>{{elem.numero}}</td>
+                                            <td>{{elem.promedio}}</td>  
+                                        </tr>
+                            </tbody>
+                        </table>
+                    </div>    
+                </div>
+                
+        </div>  
+        
+        <hr>
+        
+        <br>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 my-col">
+                    
+                    <h2>Least loyal (Bottom 10% of party)</h2>
+                    <table class="table">
+                        <thead class="thead" style="background-color:#5d4954">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Number Party Votes</th>
+                                    <th>% Missed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for = "elem in statistics.least_loyal">
+                                    <td>{{elem.first_name}} {{elem.middle_name}} {{elem.last_name}}</td>
+                                    <td>{{elem.total_votes}}</td>
+                                    <td>{{elem.votes_with_party_pct + "%"}}</td>    
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="col-lg-6 my-col">
+                        
+                        <h2>Most Loyal (top of 10% of party)</h2>
+                        <table class="table">
+                            <thead class="thead" style="background-color:#5d4954">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Number Party Votes</th>
+                                        <th>% Missed</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for = "elem in statistics.most_loyal">
+                                        <td>{{elem.first_name}} {{elem.middle_name}} {{elem.last_name}}</td>
+                                        <td>{{elem.total_votes}}</td>
+                                        <td>{{elem.votes_with_party_pct + "%"}}</td>
+
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>    
+                    
+
+                </div>
+                
+    </div>   
+
+                
+                <footer class="card-footer text-light" style="background-color:#5d4954">
+                        <div class="footer-copyright text-center py-3">
+                    <p>© 2018 Copyright: All Rights Reserved</p>
+                </div>
+                
+            </footer>
+            
+            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="./nuevo js/main-house.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+     
+</body>
+</html>
